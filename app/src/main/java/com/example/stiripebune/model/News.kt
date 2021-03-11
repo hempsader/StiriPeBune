@@ -6,12 +6,17 @@ import java.util.*
 //  https://newsapi.org/v2/top-headlines?country=us&apiKey=95d53dd483b4425c927c069230e41e5a -Api Key
 
 data class News(
-    private val id: Long,
+     val id: Long,
     @SerializedName("title")
-    private val title: String,
+     val title: String,
     @SerializedName("url")
-    private val url: String,
+     val url: String,
     @SerializedName("urlToImage")
-    private val urlToImage: String,
+     val urlToImage: String,
     @SerializedName("publishedAt")
-    private val date: Date)
+     val date: Date)
+
+data class NewsList(
+    @SerializedName("articles")
+      val articles: List<News>
+)
