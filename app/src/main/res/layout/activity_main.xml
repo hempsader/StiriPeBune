@@ -4,11 +4,4 @@
     android:layout_height="match_parent"
     android:id="@+id/newsList_container_view"
     xmlns:android="http://schemas.android.com/apk/res/android"
-   >
-
-    <androidx.gridlayout.widget.GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </androidx.gridlayout.widget.GridLayout>
-</androidx.fragment.app.FragmentContainerView>
+   />
