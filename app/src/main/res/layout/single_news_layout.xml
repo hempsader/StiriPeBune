@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="120dp">
+    android:layout_height="150dp">
 
     <TextView
         android:id="@+id/news_title"
@@ -24,8 +24,8 @@
 
     <TextView
         android:id="@+id/news_short_desc"
-        android:layout_width="281dp"
-        android:layout_height="44dp"
+        android:layout_width="278dp"
+        android:layout_height="85dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="Designers use tech to make futuristic Currency best in class"
@@ -37,7 +37,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/news_image"
         android:layout_width="91dp"
         android:layout_height="69dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -53,7 +53,7 @@
         android:layout_marginEnd="8dp"
         android:text="2M"
         app:layout_constraintBottom_toTopOf="@+id/news_short_desc"
-        app:layout_constraintEnd_toStartOf="@+id/imageView"
+        app:layout_constraintEnd_toStartOf="@+id/news_image"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/news_title"
         app:layout_constraintTop_toTopOf="parent" />

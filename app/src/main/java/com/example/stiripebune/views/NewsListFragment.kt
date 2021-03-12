@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.stiripebune.R
@@ -39,7 +40,10 @@ class NewsListFragment: Fragment(R.layout.news_recycler_fragment) {
         newsRecycler = view.findViewById(R.id.newsRecycler)
         newsRecycler.layoutManager = LinearLayoutManager(this.requireContext())
         newsAdapter = NewsRecicler(arrayListOf())
-        newsRecycler.adapter = newsAdapter
+        newsRecycler.apply {
+            addItemDecoration(DividerItemDecoration(this.context, (layoutManager as LinearLayoutManager).orientation))
+            adapter = newsAdapter
+        }
     }
 
     override fun onCreateView(
@@ -54,17 +58,14 @@ class NewsListFragment: Fragment(R.layout.news_recycler_fragment) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        newsViewModel.getNews().observe(viewLifecycleOwner    , Observer {
-            it?.let { it ->
-                when(it.status){
+        newsViewModel.getNews().observe(viewLifecycleOwner    , Observer {res ->
+                when(res.status){
                     Status.SUCCESS -> {
-                        it.data?.let {it2 ->
-                            //setupList(it.data)
-                            Log.d("aa", it2.body()?.articles.toString())
-                        }
+                        setupList(res.data?.body()?.articles ?: emptyList())
+
                     }
                     Status.ERROR -> {
-                        Log.d("aa", it.message.toString())
+                        Log.d("aa", res.message.toString())
                     }
                     Status.LOADING -> {
                         Log.d("aa","vvv")
@@ -72,7 +73,6 @@ class NewsListFragment: Fragment(R.layout.news_recycler_fragment) {
                     else -> {
                         Log.d("aa", "SAdasd")
                     }
-                }
             }
         })
     }
